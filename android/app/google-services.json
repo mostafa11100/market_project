@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "546162803063",
+    "project_id": "ecommerca-e559a",
+    "storage_bucket": "ecommerca-e559a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546162803063:android:27184c278cd7d95d892172",
+        "android_client_info": {
+          "package_name": "com.example.ecommerca_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKmHv6cTtEG_KG_Fcf-WfxkT9noJsX8QQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
