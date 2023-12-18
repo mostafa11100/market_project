@@ -73,7 +73,7 @@ class body_sign_section extends StatelessWidget {
               const SizedBox(
                 height: 50,
               ),
-              custom_st_button(
+              CustomsStbutton(
                 ontop: () {
                   if (keyform_state(formkey)) {
                     BlocProvider.of<SignUpCubit>(context)

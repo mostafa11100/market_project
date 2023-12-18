@@ -15,8 +15,7 @@ class CartCubit extends Cubit<CartState> {
   final repoabstract repo_fetch;
   void getcart_data() async {
     emit(Cartloading());
-    Either<List<model_product?>, faliur> data =
-        await repo_fetch.fetch_from_database();
+    Either<List<model_product?>, faliur> data = await repo_fetch.fetchFromDb();
 
     data.fold((left) {
       if (left.isNotEmpty) {

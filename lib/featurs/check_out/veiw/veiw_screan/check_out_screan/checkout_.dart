@@ -12,7 +12,7 @@ class check_timedelivery extends StatefulWidget {
     super.key,
     required this.ref,
   });
-  final refrance<String> ref;
+  final Refrance<String> ref;
 
   @override
   State<check_timedelivery> createState() => _check_timedeliveryState();
@@ -25,7 +25,7 @@ class _check_timedeliveryState extends State<check_timedelivery> {
   Widget build(BuildContext context) {
     // ignore: sized_box_for_whitespace
 
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height - 200,
       width: MediaQuery.of(context).size.width,
       child: Column(

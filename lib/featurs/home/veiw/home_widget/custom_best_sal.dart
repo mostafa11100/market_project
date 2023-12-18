@@ -6,9 +6,9 @@ import 'package:ecommerca_app/featurs/home/data/veiwmodel/model_categoris.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class custom_best_sall extends StatelessWidget {
-  const custom_best_sall({super.key, required this.l_product, this.byd = 2.5});
-  final List<model_product> l_product;
+class CustombBestsall extends StatelessWidget {
+  const CustombBestsall({super.key, required this.product, this.byd = 2.5});
+  final List<model_product> product;
   final double byd;
   @override
   Widget build(BuildContext context) {
@@ -18,13 +18,11 @@ class custom_best_sall extends StatelessWidget {
       height: MediaQuery.of(context).size.height / byd,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: l_product.length,
+          itemCount: product.length,
           itemBuilder: (context, i) {
-            print(l_product[i].image!);
             return InkWell(
               onTap: () {
-                GoRouter.of(context)
-                    .push(approuter.detials, extra: l_product[i]);
+                GoRouter.of(context).push(AppRouter.detials, extra: product[i]);
               },
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 2, horizontal: 5),
@@ -38,14 +36,14 @@ class custom_best_sall extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: NetworkImage(l_product[i].image!),
+                                image: NetworkImage(product[i].image!),
                               ),
                               borderRadius: BorderRadius.circular(5)),
                         ),
                       ),
                     ),
                     custom_text(
-                      text: l_product[i].name!,
+                      text: product[i].name!,
                       style: text_style.textstyle18,
                       maxline: 1,
                     ),
@@ -53,7 +51,7 @@ class custom_best_sall extends StatelessWidget {
                       height: 2,
                     ),
                     custom_text(
-                      text: l_product[i].type ?? "",
+                      text: product[i].type ?? "",
                       style: text_style.textstyle17,
                       opacity: 0.5,
                     ),
@@ -61,7 +59,7 @@ class custom_best_sall extends StatelessWidget {
                       height: 2,
                     ),
                     custom_text(
-                        text: "\$ ${l_product[i].price}",
+                        text: "\$ ${product[i].price}",
                         style: text_style.textstyle17
                             .copyWith(color: primary_color)),
                   ],

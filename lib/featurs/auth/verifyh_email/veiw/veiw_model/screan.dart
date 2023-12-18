@@ -9,15 +9,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class verify_email1 extends StatelessWidget {
-  verify_email1({super.key});
+class VerifYemail1 extends StatelessWidget {
+  const VerifYemail1({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
       padding: const EdgeInsets.only(top: 120),
-      child: Container(
+      child: SizedBox(
         height: double.infinity,
         width: double.infinity,
         child: Column(
@@ -37,7 +37,7 @@ class verify_email1 extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
+            SizedBox(
               width: 200,
               child: Center(
                 child: custom_text(
@@ -65,7 +65,7 @@ class verify_email1 extends StatelessWidget {
                   custom_text(text: "Go To", style: text_style.textstyle16),
                   custom_text_button(
                     ontap: () {
-                      GoRouter.of(context).pushReplacement(approuter.log_in);
+                      GoRouter.of(context).pushReplacement(AppRouter.loGin);
                     },
                     text: "Sign In",
                     color: primary_color,

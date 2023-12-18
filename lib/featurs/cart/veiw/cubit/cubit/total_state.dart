@@ -4,7 +4,7 @@ part of 'total_cubit.dart';
 
 @immutable
 sealed class TotalState {
-  int? total;
+  int? total = 0;
   String? message;
 }
 
@@ -15,7 +15,7 @@ final class Totalloading extends TotalState {}
 final class Totalsucces extends TotalState {
   Totalsucces(this.total);
   @override
-  int? total;
+  int? total = 0;
 }
 
 final class Totalfaluir extends TotalState {

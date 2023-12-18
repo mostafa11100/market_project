@@ -19,13 +19,14 @@ class row_photo_name extends StatelessWidget {
         Container(
           width: 100,
           height: 100,
-          child: (photo != "" || photo == null)
+          child: (photo != "" && photo != null)
               ? CircleAvatar(
                   radius: 100,
                   backgroundImage: NetworkImage(
                     photo,
                   ))
               : const CircleAvatar(
+                  backgroundColor: Colors.green,
                   radius: 100,
                   backgroundImage: AssetImage(
                     "assets/empty.PNG",

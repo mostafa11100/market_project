@@ -24,7 +24,7 @@ class addres_screan extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(8.0),
-      height: MediaQuery.of(context).size.height - 300,
+      height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: Form(
         key: kay,
@@ -32,7 +32,7 @@ class addres_screan extends StatelessWidget {
           children: [
             custom_text(
                 text: "Billing address is same as delivery address",
-                style: text_style.textstyle18),
+                style: text_style.textstyle17),
             const SizedBox(
               height: 30,
             ),
@@ -41,14 +41,14 @@ class addres_screan extends StatelessWidget {
               text1: "streat 1",
               text2: "21, Alex Devidson Avenue",
               h: 100.0,
-              w: MediaQuery.of(context).size.width - 18.0,
+              w: MediaQuery.of(context).size.width,
             ),
             const SizedBox(
               height: 30,
             ),
             column_feild(
               h: 100.0,
-              w: MediaQuery.of(context).size.width - 18.0,
+              w: MediaQuery.of(context).size.width,
               controlle: streat2,
               text1: "streat 2",
               text2: "Oposite Omegratin,Vecint Quantr",
@@ -58,7 +58,7 @@ class addres_screan extends StatelessWidget {
             ),
             column_feild(
               h: 100.0,
-              w: MediaQuery.of(context).size.width - 18.0,
+              w: MediaQuery.of(context).size.width,
               controlle: city,
               text1: "city",
               text2: "Vectoria island",
@@ -115,9 +115,6 @@ class column_feild extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: custom_text(
                   opacity: .6, text: text1, style: text_style.textstyle16)),
-          const SizedBox(
-            height: 10,
-          ),
           custom_feild(
             st: true,
             controlle: controlle,

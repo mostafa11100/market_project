@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class custom_generat_line extends StatelessWidget {
-  const custom_generat_line({super.key});
+class CustomGeneratLine extends StatelessWidget {
+  const CustomGeneratLine({super.key});
 
   @override
   Widget build(BuildContext context) {

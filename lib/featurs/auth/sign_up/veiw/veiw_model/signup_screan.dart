@@ -18,7 +18,7 @@ class sign_up extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: IconButton(
                 onPressed: () {
-                  GoRouter.of(context).pushReplacement(approuter.log_in);
+                  GoRouter.of(context).pushReplacement(AppRouter.loGin);
                 },
                 icon: const Icon(Icons.arrow_back_ios)),
           ),

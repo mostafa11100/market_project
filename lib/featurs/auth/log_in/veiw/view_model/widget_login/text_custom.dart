@@ -7,7 +7,7 @@ class custom_text extends StatelessWidget {
       this.opacity = 1.0,
       required this.text,
       required this.style,
-      this.maxline = 100});
+      this.maxline = 1});
   final int maxline;
   double opacity;
   TextStyle style;

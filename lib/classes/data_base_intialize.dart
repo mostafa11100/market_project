@@ -1,28 +1,20 @@
 // ignore_for_file: non_constant_identifier_names, unused_local_variable
 
-import 'package:ecommerca_app/featurs/home/data/veiwmodel/model_categoris.dart';
+import 'package:ecommerca_app/consts/database_qeury.dart';
 
 import 'package:sqflite/sqflite.dart';
+
+import 'package:ecommerca_app/featurs/home/data/veiwmodel/model_categoris.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 
-String createdb =
-    'CREATE TABLE Test  (name TEXT, details TEXT,  count INTEGER ,image TEXT, color TEXT,    price INTEGER , size INTEGER ,category_name TEXT)';
-
-String created2 =
-    'CREATE TABLE Test (id INTEGER PRIMARY KEY, name TEXT, sum TEXT, num REAL  )';
-
-class db_ {
+class Db {
   Database? _db;
 
   Future<Database?> get getdb async {
     _db = await create_cb();
-    // if (db_ == Null) {
-    //   _db = await create_cb();
-    //   return _db;
-    // } else {
-    //   _db = await open_database();
+
     return _db;
-    // }
   }
 
   Future<Database> create_cb() async {
@@ -31,7 +23,6 @@ class db_ {
 
     Database database = await openDatabase(path, version: 1,
         onCreate: (Database db, int version) async {
-      print("create again  $createdb");
       await db.execute(createdb);
     });
 
@@ -48,18 +39,15 @@ class db_ {
     try {
       Database? db_q = await getdb;
       int? response = 0;
-      String inser_code = ''' INSERT INTO  test (
-     name, details, count,
-     image, color, price,
-     size, category_name
-   ) VALUES (?, ?, ?, ?, ?, ?,?, ?) ''';
+
       await db_q?.transaction((txn) async {
-        response = await txn.rawInsert(inser_code, values.list_cart);
+        response = await txn.rawInsert(sql, values.list_cart);
       });
 
       return response;
     } on DatabaseException catch (e) {
-      print("eror db $e");
+      // ignore: avoid_print
+      print(e);
       return 0;
     }
   }

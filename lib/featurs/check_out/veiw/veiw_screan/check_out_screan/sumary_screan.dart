@@ -1,13 +1,14 @@
 import 'package:ecommerca_app/consts/style_const/textstyle.dart';
 import 'package:ecommerca_app/featurs/auth/log_in/veiw/view_model/widget_login/text_custom.dart';
-import 'package:ecommerca_app/featurs/cart/data/repo/repo_cart.dart';
+import 'package:ecommerca_app/featurs/cart/data/repo/repoimp_db.dart';
 import 'package:ecommerca_app/featurs/cart/veiw/cubit/cubit/cart_cubit.dart';
 import 'package:ecommerca_app/featurs/home/veiw/home_widget/custom_best_sal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class summary_screan extends StatelessWidget {
-  const summary_screan(
+// ignore: camel_case_types
+class summary_screan1 extends StatelessWidget {
+  const summary_screan1(
       {super.key,
       required this.streat1,
       required this.streat2,
@@ -22,8 +23,8 @@ class summary_screan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CartCubit(repo_imp_fetch_cart())..getcart_data(),
-      child: Container(
+      create: (context) => CartCubit(DbrepoImp())..getcart_data(),
+      child: SizedBox(
         height: 200,
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -40,10 +41,9 @@ class summary_screan extends StatelessWidget {
                   );
                 }
                 if (state is Cartsuccess) {
-                  print("succes${state.data![0].type}");
-                  return custom_best_sall(
+                  return CustombBestsall(
                     byd: 2.8,
-                    l_product: state.data!,
+                    product: state.data!,
                   );
                 }
                 return Center(

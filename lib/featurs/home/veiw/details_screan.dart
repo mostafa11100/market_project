@@ -18,13 +18,16 @@ class details_screan extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(15),
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-              Container(
+              const SizedBox(
+                height: 5,
+              ),
+              SizedBox(
                   width: double.infinity,
-                  height: 200,
+                  height: MediaQuery.of(context).size.height / 3.5,
                   child: Image.network(product.image!)),
               const SizedBox(
                 height: 20,
@@ -61,7 +64,9 @@ class details_screan extends StatelessWidget {
                 height: 20,
               ),
               custom_text(
-                  text: product.details!, style: text_style.textstyle16),
+                  maxline: 10,
+                  text: product.details!,
+                  style: text_style.textstyle14),
               const SizedBox(
                 height: 15,
               ),
@@ -77,6 +82,8 @@ class details_screan extends StatelessWidget {
                       product.color,
                       product.count);
                   BlocProvider.of<cart_add_cubit2>(context).add_tocrt(pr);
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(snakbar("item added"));
                 },
                 product: product,
               )
@@ -89,7 +96,25 @@ class details_screan extends StatelessWidget {
     await Flushbar(
       title: '',
       message: body,
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
     ).show(context);
   }
+}
+
+SnackBar snakbar(content) {
+  return SnackBar(
+      duration: Duration(milliseconds: 500),
+      backgroundColor: const Color.fromARGB(255, 54, 99, 136),
+      content: Row(
+        children: [
+          const Icon(
+            Icons.done,
+            color: Colors.white,
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          custom_text(text: content, style: text_style.textstyle17)
+        ],
+      ));
 }

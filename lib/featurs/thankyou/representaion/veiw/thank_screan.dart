@@ -1,44 +1,55 @@
-import 'package:ecommerca_app/featurs/thankyou/representaion/veiw/widget/_container.dart';
-import 'package:ecommerca_app/featurs/thankyou/representaion/veiw/widget/_custom_right_circle.dart';
-import 'package:ecommerca_app/featurs/thankyou/representaion/veiw/widget/custom_circle_left.dart';
-import 'package:ecommerca_app/featurs/thankyou/representaion/veiw/widget/custom_image_circle.dart';
-import 'package:ecommerca_app/featurs/thankyou/representaion/veiw/widget/custom_line_ginerate.dart';
-import 'package:ecommerca_app/functions/appbar_custom.dart';
+import 'package:ecommerca_app/approuter.dart';
+import 'package:ecommerca_app/consts/style_const/color_app.dart';
+import 'package:ecommerca_app/featurs/auth/log_in/veiw/view_model/widget_login/custom_btton.dart';
+import 'package:ecommerca_app/featurs/auth/verifyh_email/veiw/veiw_model/widget_verify/buton_state.dart';
+import 'package:ecommerca_app/featurs/cart/veiw/cubit/cubit/total_cubit.dart';
+import 'package:ecommerca_app/featurs/thankyou/representaion/veiw/widget/thank_screen_body_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
-class thank_screan extends StatelessWidget {
-  const thank_screan({super.key});
+class ThankScrean extends StatelessWidget {
+  const ThankScrean({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Transform.translate(
-        offset: Offset(0, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 50,
-            ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.arrow_back_ios_outlined),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 25, right: 25),
-              child: Stack(clipBehavior: Clip.none, children: [
-                const custom_container(),
-                custom_position_circle(
-                    left: -20, bottom: MediaQuery.of(context).size.height / 2),
-                const custom_right_circle(),
-                const custom_image_circle(),
-                const custom_generat_line()
-              ]),
-            ),
-          ],
+        offset: const Offset(0, 0),
+        child: BlocBuilder<TotalCubit, TotalState>(
+          builder: (context, state) {
+            if (state is Totalloading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is Totalfaluir) {
+              return Column(
+                children: [
+                  const Center(
+                    child: Text(
+                      "error",
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  custom_button(
+                    ontop: () {
+                      context.pushReplacement(AppRouter.homee);
+                    },
+                    text: "back home",
+                    color: primary_color,
+                    height: 70,
+                    width: 150,
+                  )
+                ],
+              );
+            }
+            return ThanScreenkBody(
+              total: state.total.toString(),
+            );
+          },
         ),
       ),
     );

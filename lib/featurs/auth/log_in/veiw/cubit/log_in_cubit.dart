@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:ecommerca_app/consts/faliur.dart';
 import 'package:ecommerca_app/featurs/auth/log_in/data/repo_data_imp.dart';
-import 'package:ecommerca_app/featurs/auth/log_in/data/repo_imp_signinwithgoogl.dart';
-import 'package:ecommerca_app/featurs/auth/log_in/data/signin_withfacebook.dart';
 import 'package:either_dart/either.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +28,7 @@ class LogInCubit extends Cubit<LogInState> {
 class LogInCubit_googl extends Cubit<LogInState> {
   LogInCubit_googl(this.repo_imp) : super(LogInInitial());
 
-  final sign_inwith_googl repo_imp;
+  final repo_imp_signin repo_imp;
 
   void signinwithgoogl() {
     emit(LogInloading());
@@ -40,15 +38,5 @@ class LogInCubit_googl extends Cubit<LogInState> {
     }, (right) {
       emit(LogInsucces(right.user!.emailVerified));
     });
-  }
-}
-
-class LogInCubit_face extends Cubit<LogInState> {
-  LogInCubit_face(this.repo_imp) : super(LogInInitial());
-
-  final sign_inwith_facebook repo_imp;
-
-  void signinwithfacebook() {
-    emit(LogInloading());
   }
 }

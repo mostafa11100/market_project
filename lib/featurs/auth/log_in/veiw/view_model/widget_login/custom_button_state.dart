@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class custom_state_button extends StatelessWidget {
-  const custom_state_button(
+class CustomStateButton extends StatelessWidget {
+  const CustomStateButton(
       {super.key,
       required this.controlemail,
       this.controlepasword,
@@ -35,16 +35,16 @@ class custom_state_button extends StatelessWidget {
         if (state is LogInsucces) {
           state.checkstateandgo(() {
             add_user.add_to_shared(controlemail.text, "user");
-            GoRouter.of(context).pushReplacement(approuter.homee);
+            GoRouter.of(context).pushReplacement(AppRouter.homee);
           }, () {
-            GoRouter.of(context).pushReplacement(approuter.veriyfy);
+            GoRouter.of(context).pushReplacement(AppRouter.veriYfy);
           });
         }
         if (state is LogInfaliur) {
           showDialog(
               context: context,
               builder: (context) => AlertDialog(
-                    title: Text("error"),
+                    title: const Text("error"),
                     content: Text(state.message),
                     actions: [
                       Center(

@@ -2,15 +2,15 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerca_app/featurs/payment_checkout/data/paymentinit_model/model_payment_prametar.dart';
 
 abstract class repo_strip {
-  Future<Either<fail, void>> createpayment(
-      {required paymentinit_model_prametar model});
+  Future<Either<Fil, void>> createpayment(
+      {required PaymentinitModelPrametar model, required String id});
 }
 
-abstract class fail {
+abstract class Fil {
   String? error;
-  fail(this.error);
+  Fil(this.error);
 }
 
-class serverfail extends fail {
-  serverfail(super.error);
+class Serverfail extends Fil {
+  Serverfail(super.error);
 }

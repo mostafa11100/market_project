@@ -8,14 +8,12 @@ class order_info extends StatelessWidget {
   final String text2;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: [
-          custom_text(text: text1, style: text_style.textstyle18),
-          const Spacer(),
-          custom_text(text: text2, style: text_style.textstyle18),
-        ],
-      ),
+    return Row(
+      children: [
+        custom_text(text: text1, style: text_style.textstyle18),
+        const Spacer(),
+        custom_text(text: text2, style: text_style.textstyle18),
+      ],
     );
   }
 }

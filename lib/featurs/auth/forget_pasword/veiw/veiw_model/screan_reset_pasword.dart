@@ -70,7 +70,7 @@ class verify_pasword extends StatelessWidget {
                   custom_text(text: "go to", style: text_style.textstyle16),
                   custom_text_button(
                     ontap: () {
-                      GoRouter.of(context).pushReplacement(approuter.log_in);
+                      GoRouter.of(context).pushReplacement(AppRouter.loGin);
                     },
                     text: "Sign In",
                     style:

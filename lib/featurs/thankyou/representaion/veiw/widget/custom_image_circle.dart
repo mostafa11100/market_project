@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class custom_image_circle extends StatelessWidget {
-  const custom_image_circle({super.key});
+class CustomImageCircle extends StatelessWidget {
+  const CustomImageCircle({super.key});
 
   @override
   Widget build(BuildContext context) {

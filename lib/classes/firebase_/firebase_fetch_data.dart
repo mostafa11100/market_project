@@ -12,21 +12,28 @@ class fetc_fromfirebase {
   static Future<
           Either<faliur, List<QueryDocumentSnapshot<Map<String, dynamic>>>>?>
       fecth_data(collection, k, v, type) async {
+    print("fire1");
     try {
       if (type == true) {
-        return search_in_firebase.fecth_data(collection, k, v);
+        print("fire2");
+        return await search_in_firebase.fecth_data(collection, k, v);
       } else {
-        fetch = await FirebaseFirestore.instance.collection(collection).get();
-
+        print("fire3");
+        try {
+          fetch = await FirebaseFirestore.instance.collection(collection).get();
+        } catch (e) {
+          print("enter in fir 3");
+        }
+        print("fire4");
         List<QueryDocumentSnapshot<Map<String, dynamic>>>? docs = fetch?.docs;
         // print(docs);
-
+        print("fire5  ${docs!.length}");
         return Right(docs!);
       }
     } on FirebaseAuthMultiFactorException catch (e) {
+      print("fffffff");
       return Left(faliur.firebase_auth_error(e));
     } catch (e) {
-      print("rrrrr = = = $e");
       return Left(faliur(e.toString()));
     }
   }

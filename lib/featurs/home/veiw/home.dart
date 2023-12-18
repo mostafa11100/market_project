@@ -64,8 +64,8 @@ class home extends StatelessWidget {
                     return const Center(child: CircularProgressIndicator());
                   }
                   if (state is DataHomeScreansucces_best_saller) {
-                    return custom_best_sall(
-                      l_product: state.list_model_best_product,
+                    return CustombBestsall(
+                      product: state.list_model_best_product,
                     );
                   }
                   // ignore: curly_braces_in_flow_control_structures

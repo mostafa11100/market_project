@@ -13,13 +13,12 @@ class TotalCubit extends Cubit<TotalState> {
   final repoabstract total;
 
   void gettotal() async {
-    Either<List<model_product?>, faliur> response =
-        await total.fetch_from_database();
+    Either<List<model_product?>, faliur> response = await total.fetchFromDb();
 
     response.fold((left) {
-      print(left.length);
       emit(Totalsucces(total_price(left)));
     }, (right) {
+      print("erororororororoororo");
       emit(Totalfaluir(right.error));
     });
   }

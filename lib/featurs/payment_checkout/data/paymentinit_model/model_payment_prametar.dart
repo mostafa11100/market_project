@@ -1,9 +1,10 @@
-class paymentinit_model_prametar {
+class PaymentinitModelPrametar {
   String? amount;
   String? eccurance;
+  String? customrid;
 
-  paymentinit_model_prametar({this.amount, this.eccurance});
+  PaymentinitModelPrametar({this.amount, this.eccurance, this.customrid});
   tojson() {
-    return {'amount': amount, 'currency': eccurance};
+    return {'amount': amount, 'currency': eccurance, 'customer': customrid};
   }
 }

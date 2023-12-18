@@ -6,6 +6,13 @@ import 'package:ecommerca_app/consts/faliur.dart';
 import 'package:ecommerca_app/featurs/home/data/veiwmodel/model_categoris.dart';
 import 'package:either_dart/either.dart';
 
+mixin fecth_categoris1 {
+  Future<Either<faliur, List<model_categorise>>> fecth_categoris();
+}
+mixin fecth_best_saller1 {
+  Future<Either<faliur, List<model_product>>> fecth_best_saller(c, k, v, t);
+}
+
 abstract class repo {
   Future<Either<faliur, List<model_categorise>>> fecth_categoris();
   Future<Either<faliur, List<model_product>>> fecth_best_saller(c, k, v, t);
@@ -18,18 +25,22 @@ class repo_fetchdata_imp extends repo {
 
     faliur? f;
 
-    Either<faliur, List<QueryDocumentSnapshot<Map<String, dynamic>>>>? data =
-        await fetc_fromfirebase.fecth_data("categorise", '', '', false);
-    data?.fold((left) {
-      f = left;
-    }, (right) {
-      right.forEach((element) {
-        lM.add(model_categorise.fromjson(element.data()));
+    try {
+      Either<faliur, List<QueryDocumentSnapshot<Map<String, dynamic>>>>? data =
+          await fetc_fromfirebase.fecth_data("categorise", '', '', false);
+      data?.fold((left) {
+        f = left;
+      }, (right) {
+        for (var element in right) {
+          lM.add(model_categorise.fromjson(element.data()));
+        }
       });
-    });
-    if (f == null)
-      return Right(lM);
-    else {
+      if (f == null) {
+        return Right(lM);
+      } else {
+        return Left(f!);
+      }
+    } catch (e) {
       return Left(f!);
     }
   }

@@ -16,8 +16,8 @@ import 'package:go_router/go_router.dart';
 import '../../../../../consts/style_const/textstyle.dart';
 
 // ignore: must_be_immutable
-class login extends StatelessWidget {
-  login({super.key});
+class Login extends StatelessWidget {
+  Login({super.key});
 
   late TextEditingController controlemail;
 
@@ -36,14 +36,14 @@ class login extends StatelessWidget {
       body: ListView(
         children: [
           Container(
-            padding: EdgeInsets.only(top: 100, left: 25, right: 25),
+            padding: const EdgeInsets.only(top: 100, left: 25, right: 25),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Card(
                   child: Column(
                     children: [
-                      const row_welcom(),
+                      const RowWelcom(),
                       const SizedBox(
                         height: 5,
                       ),
@@ -58,7 +58,7 @@ class login extends StatelessWidget {
                       const SizedBox(
                         height: 50,
                       ),
-                      body_setion(
+                      BodySetion(
                         controlleemail: controlemail,
                         controllepasword: controlepasword,
                         keyform: kef,
@@ -66,7 +66,7 @@ class login extends StatelessWidget {
                       const SizedBox(
                         height: 30,
                       ),
-                      custom_state_button(
+                      CustomStateButton(
                         ontop: () async {
                           if (keyform_state(kef)) {
                             BlocProvider.of<LogInCubit>(context).signin(
@@ -90,30 +90,29 @@ class login extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                BlocListener<LogInCubit_face, LogInState>(
-                  listener: (context, state) {
-                    if (state is LogInsucces) {
-                      GoRouter.of(context).pushReplacement(approuter.homee);
-                    }
-                  },
-                  child: social_auth(
-                    ontap: () {
-                      BlocProvider.of<LogInCubit_face>(context)
-                          .signinwithfacebook();
-                      su.save(null);
-                    },
-                    icon: fascebook_logo,
-                    text: "Sign in with Facebook",
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
+                // BlocListener<LogInCubit_face, LogInState>(
+                //   listener: (context, state) {
+                //     if (state is LogInsucces) {
+                //       GoRouter.of(context).pushReplacement(AppRouter.homee);
+                //     }
+                //   },
+                //   child: social_auth(
+                //     ontap: () {
+
+                //       su.save(null);
+                //     },
+                //     icon: fascebook_logo,
+                //     text: "Sign in with Facebook",
+                //   ),
+                // ),
+                // const SizedBox(
+                //   height: 8,
+                // ),
                 BlocListener<LogInCubit_googl, LogInState>(
                   listener: (context, state) {
                     if (state is LogInsucces) {
                       su.save(null);
-                      GoRouter.of(context).pushReplacement(approuter.homee);
+                      GoRouter.of(context).pushReplacement(AppRouter.homee);
                     }
                   },
                   child: social_auth(

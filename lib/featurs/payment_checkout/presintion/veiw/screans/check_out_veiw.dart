@@ -1,22 +1,37 @@
-// import 'package:ecommerca_app/consts/style_const/color_app.dart';
-// import 'package:ecommerca_app/featurs/auth/log_in/veiw/view_model/widget_login/custom_btton.dart';
-// import 'package:ecommerca_app/featurs/auth/log_in/veiw/view_model/widget_login/custom_text_buttton.dart';
-// import 'package:ecommerca_app/featurs/cart/veiw/veiwmodel/widget_cart/custom_image.dart';
-// import 'package:ecommerca_app/featurs/payment_checkout/presintion/veiw/check_out_widget/body_widget.dart';
-// import 'package:ecommerca_app/functions/appbar_custom.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
+import 'package:ecommerca_app/featurs/cart/veiw/cubit/cubit/total_cubit.dart';
+import 'package:ecommerca_app/featurs/payment_checkout/data/check_outdata_model/check_out_model.dart';
+import 'package:flutter/material.dart';
 
-// import 'package:ecommerca_app/consts/style_const/textstyle.dart';
-// import 'package:ecommerca_app/featurs/auth/log_in/veiw/view_model/widget_login/text_custom.dart';
-// import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+import 'package:ecommerca_app/featurs/payment_checkout/presintion/veiw/check_out_widget/body_widget.dart';
+import 'package:ecommerca_app/utlis/appbar_custom.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-// class check_out_veiw extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: custom_appbar("My Cart"),
-//       body: const body_checkout(),
-//     );
-//   }
-// }
+class CheckOutveiw extends StatelessWidget {
+  const CheckOutveiw({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: customAppbar("My Cart"),
+      body: BlocBuilder<TotalCubit, TotalState>(
+        builder: (context, state) {
+          if (state is Totalsucces) {
+            return BodyCheckout(
+              checkmodel: CheckOutModel(
+                  discount: 0,
+                  shiping: 0,
+                  subtotal: state.total,
+                  total: state.total),
+            );
+          } else {
+            return Scaffold(
+              body: Center(
+                child: Text("error ${state.message}"),
+              ),
+            );
+          }
+        },
+      ),
+    );
+  }
+}

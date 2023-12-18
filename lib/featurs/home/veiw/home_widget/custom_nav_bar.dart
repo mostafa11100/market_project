@@ -2,7 +2,7 @@ import 'package:ecommerca_app/consts/style_const/color_app.dart';
 import 'package:ecommerca_app/consts/style_const/icon_app.dart';
 import 'package:ecommerca_app/consts/style_const/textstyle.dart';
 import 'package:ecommerca_app/featurs/auth/log_in/veiw/view_model/widget_login/text_custom.dart';
-import 'package:ecommerca_app/featurs/home_feature/veiw/cubit/home_controle_featue_cubit.dart';
+import 'package:ecommerca_app/featurs/landing_badge/veiw/cubit/landingBadge_controle_featue_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,7 +25,8 @@ class _custom_vanvg_barState extends State<custom_vanvg_bar> {
       height: 60,
       onDestinationSelected: (int index) {
         setState(() {
-          BlocProvider.of<HomeControleFeatueCubit>(context).goto_screan(index);
+          BlocProvider.of<LandingControleFeatueCubit>(context)
+              .goto_screan(index);
           x = index;
         });
       },

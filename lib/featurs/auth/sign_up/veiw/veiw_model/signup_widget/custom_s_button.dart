@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class custom_st_button extends StatelessWidget {
-  custom_st_button({super.key, required this.ontop, required this.name});
+class CustomsStbutton extends StatelessWidget {
+  CustomsStbutton({super.key, required this.ontop, required this.name});
   final Function() ontop;
   final save_user su = save_user(FirebaseAuth.instance);
 
@@ -41,7 +41,7 @@ class custom_st_button extends StatelessWidget {
   }
 }
 
-show(context, message, title, save_user save_u, String? name) {
+show(context, message, title, save_user saveU, String? name) {
   return showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -53,8 +53,9 @@ show(context, message, title, save_user save_u, String? name) {
                   ontop: () async {
                     GoRouter.of(context).pop();
                     if (title != "Error") {
-                      await save_u.save(name!);
-                      GoRouter.of(context).pushReplacement(approuter.veriyfy);
+                      await saveU.save(name!);
+                      // ignore: use_build_context_synchronously
+                      GoRouter.of(context).pushReplacement(AppRouter.veriYfy);
                     }
                   },
                   text: "OK",

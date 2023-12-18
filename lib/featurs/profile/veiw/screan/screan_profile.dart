@@ -11,7 +11,7 @@ class profile extends StatelessWidget {
     super.key,
   });
 
-  get_user user = get_user();
+  GetUser user = GetUser();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

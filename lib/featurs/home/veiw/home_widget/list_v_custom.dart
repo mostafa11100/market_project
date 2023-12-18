@@ -4,11 +4,18 @@ import 'package:ecommerca_app/featurs/home/data/veiwmodel/model_categoris.dart';
 import 'package:ecommerca_app/featurs/home/veiw/cubit/cubit/data_home_screan_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
-class custom_l extends StatelessWidget {
+class custom_l extends StatefulWidget {
   custom_l({super.key, required this.state});
 
   final List<model_categorise> state;
+
+  @override
+  State<custom_l> createState() => _custom_lState();
+}
+
+class _custom_lState extends State<custom_l> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -16,13 +23,13 @@ class custom_l extends StatelessWidget {
       width: double.infinity,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: state.length,
+          itemCount: widget.state.length,
           itemBuilder: (context, i) {
             return InkWell(
               //  splashColor: const Color.fromARGB(255, 113, 167, 211),
               onTap: () {
                 BlocProvider.of<DataHomeScrean_bestCubit>(context).fetcform_fir(
-                    "best_seler", "categoris_name", state[i].type, true);
+                    "best_seler", "categoris_name", widget.state[i].type, true);
               },
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
@@ -35,9 +42,18 @@ class custom_l extends StatelessWidget {
                       children: [
                         Expanded(
                             flex: 5,
-                            child: Image.network(
-                              "${state[i].photo}",
-                              fit: BoxFit.fill,
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              child: CachedNetworkImage(
+                                imageUrl: widget.state[i].photo.toString(),
+                                placeholder: (context, url) => const Center(
+                                    child: CircularProgressIndicator()),
+                                errorWidget: (context, url, error) {
+                                  print("error ${error.toString()}");
+                                  return const Icon(Icons.error);
+                                },
+                              ),
                             )),
                         const SizedBox(
                           height: 20,
@@ -45,7 +61,7 @@ class custom_l extends StatelessWidget {
                         Expanded(
                             flex: 4,
                             child: custom_text(
-                                text: state[i].type!,
+                                text: widget.state[i].type!,
                                 style: text_style.textstyle14)),
                       ],
                     )),

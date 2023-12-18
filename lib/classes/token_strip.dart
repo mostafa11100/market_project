@@ -1,2 +1,0 @@
-String token_strip =
-    "pk_test_51OFKTxDx3Dy89HJdH8mEVe6ykFQOAB9sP96m2qe21Zmg7uQR1w4oajt2ZJZfHqXz244Gy4aUuGuRHWsAxjasZVIG00un2dWFjt";

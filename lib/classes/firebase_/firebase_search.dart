@@ -21,7 +21,6 @@ class search_in_firebase {
     } on FirebaseAuthMultiFactorException catch (e) {
       return Left(faliur.firebase_auth_error(e));
     } catch (e) {
-      print("rrrrr = = = $e");
       return Left(faliur(e.toString()));
     }
   }

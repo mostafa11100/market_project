@@ -7,8 +7,8 @@ import '../../../../../../consts/style_const/textstyle.dart';
 
 import 'package:flutter/material.dart';
 
-class row_welcom extends StatelessWidget {
-  const row_welcom({super.key});
+class RowWelcom extends StatelessWidget {
+  const RowWelcom({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class row_welcom extends StatelessWidget {
         Spacer(),
         custom_text_button(
           ontap: () {
-            GoRouter.of(context).pushReplacement(approuter.signup);
+            GoRouter.of(context).pushReplacement(AppRouter.siGnup);
           },
           text: "Sing Up",
           color: primary_color,

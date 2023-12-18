@@ -3,7 +3,7 @@
 import 'package:ecommerca_app/featurs/profile/data/model_user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class shared1 {
+class Shared {
   static SharedPreferences? sharedp;
 
   static void add(name, photo, email) async {

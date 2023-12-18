@@ -1,4 +1,4 @@
-class refrance<T> {
+class Refrance<T> {
   T? value;
-  refrance(this.value);
+  Refrance(this.value);
 }

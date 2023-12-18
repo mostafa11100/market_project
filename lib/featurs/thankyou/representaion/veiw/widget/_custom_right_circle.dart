@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class custom_right_circle extends StatelessWidget {
-  const custom_right_circle({super.key});
+class CustomRightCircle extends StatelessWidget {
+  const CustomRightCircle({super.key});
 
   @override
   Widget build(BuildContext context) {

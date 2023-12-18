@@ -5,8 +5,8 @@ import 'package:ecommerca_app/functions/validat.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class body_setion extends StatelessWidget {
-  body_setion(
+class BodySetion extends StatelessWidget {
+  const BodySetion(
       {super.key,
       required this.controlleemail,
       required this.controllepasword,
@@ -40,8 +40,7 @@ class body_setion extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: custom_text_button(
                 ontap: () {
-                  GoRouter.of(context)
-                      .pushReplacement(approuter.verify_pasowrd);
+                  GoRouter.of(context).pushReplacement(AppRouter.verifypasowrd);
                 },
                 text: "Forget Pasword",
               ),
