@@ -7,8 +7,8 @@ class GetUser {
   String? photo;
   void getdata() async {
     modecl_user user = await Shared.get_user_from_sharedd();
-    name = user.name;
-    email = user.email;
+    name = user.name == "" ? "" : user.name;
+    email = user.email == "" ? "" : user.email;
     photo = user.photo == "" ? "" : user.photo;
   }
 

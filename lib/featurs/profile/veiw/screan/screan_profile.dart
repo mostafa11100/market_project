@@ -19,7 +19,7 @@ class profile extends StatelessWidget {
         padding: const EdgeInsets.all(30),
         child: Column(
           children: [
-            Container(
+            SizedBox(
                 height: MediaQuery.of(context).size.height / 5.2,
                 child: row_photo_name(
                   photo: user.photo,
